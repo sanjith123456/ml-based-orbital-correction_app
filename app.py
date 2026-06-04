@@ -593,8 +593,7 @@ cpf_files = sorted(
         "sample_data/*.hts.txt"
     )
 )
-
-    gmat_path = "sample_data/hope_atm_240.txt"
+gmat_path = "sample_data/hope_atm_240.txt"
 
     if run_button:
 
