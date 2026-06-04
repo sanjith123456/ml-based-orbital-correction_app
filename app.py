@@ -588,13 +588,13 @@ def rmse(x):
 if mode == "Demo":
     st.info("Using sample data")
 
-    cpf_files = sorted(
-        glob.glob(
-            "sample_data/cpf/*.hts.txt"
-        )
+cpf_files = sorted(
+    glob.glob(
+        "sample_data/*.hts.txt"
     )
+)
 
-    gmat_path = "sample_data/sample_gmat.txt"
+    gmat_path = "sample_data/hope_atm_240.txt"
 
     if run_button:
 
