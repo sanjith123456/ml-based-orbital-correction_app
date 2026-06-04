@@ -585,15 +585,18 @@ def rmse(x):
 # ==================================
 # DEMO FILES
 # ==================================
+
 if mode == "Demo":
+
     st.info("Using sample data")
 
-cpf_files = sorted(
-    glob.glob(
-        "sample_data/*.hts.txt"
+    cpf_files = sorted(
+        glob.glob(
+            "sample_data/*.hts.txt"
+        )
     )
-)
-gmat_path = "sample_data/hope_atm_240.txt"
+
+    gmat_path = "sample_data/hope_atm_240.txt"
 
     if run_button:
 
@@ -609,10 +612,7 @@ gmat_path = "sample_data/hope_atm_240.txt"
 
         with open(gmat_path, "rb") as fp:
 
-            gmat_lines = (
-                fp.read().splitlines()
-            )
-
+            gmat_lines = fp.read().splitlines()
 # ==================================
 # RUN
 # ==================================
