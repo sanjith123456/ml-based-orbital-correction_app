@@ -1,4 +1,5 @@
 import streamlit as st
+import glob
 import numpy as np
 import pandas as pd
 import torch
@@ -584,21 +585,34 @@ def rmse(x):
 # ==================================
 # DEMO FILES
 # ==================================
-
 if mode == "Demo":
-
     st.info("Using sample data")
 
-    cpf_path = "sample_data/sample.hts.txt"
+    cpf_files = sorted(
+        glob.glob(
+            "sample_data/cpf/*.hts.txt"
+        )
+    )
+
     gmat_path = "sample_data/sample_gmat.txt"
 
     if run_button:
 
-        with open(cpf_path, "rb") as f:
-            cpf_file = f.read().splitlines()
+        cpf_lines = []
 
-        with open(gmat_path, "rb") as f:
-            gmat_file = f.read().splitlines()
+        for f in cpf_files:
+
+            with open(f, "rb") as fp:
+
+                cpf_lines.extend(
+                    fp.read().splitlines()
+                )
+
+        with open(gmat_path, "rb") as fp:
+
+            gmat_lines = (
+                fp.read().splitlines()
+            )
 
 # ==================================
 # RUN
@@ -615,10 +629,7 @@ if run_button:
         cpf_lines = cpf_file.readlines()
         gmat_lines = gmat_file.readlines()
 
-    else:
-
-        cpf_lines = cpf_file
-        gmat_lines = gmat_file
+    
 
     with st.spinner("Loading data..."):
 
